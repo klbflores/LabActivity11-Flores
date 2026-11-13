@@ -46,22 +46,7 @@
     php artisan key:generate
 
     Configure MySQL in `.env:`
-    ```DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=barangay_bulletin_lab11_db
-    DB_USERNAME=root
-    DB_PASSWORD=
+    ```DB_CONNECTION=sqlite
 
-4. **Run Migrations & Seeders:**
-    ```bash
-    php artisan migrate:fresh --seed
-
-5. **Install & Build Frontend Assets:**
-    ```bash
-    npm install
-    npm run dev
-
-5. **Start Laravel Server:**
-    ```bash
-    php artisan serve
+    ```powershell
+    type nul > database\database.sqlite
