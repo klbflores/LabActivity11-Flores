@@ -3,19 +3,25 @@
 
 @section('content')
 <div class="space-y-6">
-    <!-- Search, Category & Tag Filters -->
-    <form method="GET" action="{{ route('posts.index') }}" class="bg-white border border-emerald-100 rounded-2xl p-4 shadow-xs flex flex-col md:flex-row gap-3">
-        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search Purok Flores announcements..."
-            class="flex-1 rounded-xl border border-emerald-200 px-3.5 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+    <!-- Page Intro Header -->
+    <div class="border-b border-emerald-800 pb-4">
+        <h1 class="text-3xl font-black text-white tracking-tight">Community Announcements</h1>
+        <p class="text-sm font-medium text-emerald-200 mt-1">Updates, health drives, and notices for Purok Flores residents.</p>
+    </div>
 
-        <select name="category" class="rounded-xl border border-emerald-200 px-3.5 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+    <!-- Search, Category & Tag Filters -->
+    <form method="GET" action="{{ route('posts.index') }}" class="bg-white border border-emerald-100 rounded-2xl p-4 shadow-md flex flex-col md:flex-row gap-3">
+        <input type="text" name="search" value="{{ request('search') }}" placeholder="Search Purok Flores announcements..."
+            class="flex-1 rounded-xl border border-emerald-200 px-3.5 py-2 text-sm text-[#3b4e47] placeholder-[#6b7f77] focus:text-[#283832] focus:outline-none focus:ring-2 focus:ring-emerald-500">
+
+        <select name="category" class="rounded-xl border border-emerald-200 px-3.5 py-2 text-sm text-[#3b4e47] bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <option value="All">All Categories</option>
             @foreach(['Announcement', 'Health', 'Peace & Order', 'Ayuda', 'Youth & Sports'] as $cat)
                 <option value="{{ $cat }}" @selected(request('category') === $cat)>{{ $cat }}</option>
             @endforeach
         </select>
 
-        <select name="tag" class="rounded-xl border border-emerald-200 px-3.5 py-2 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        <select name="tag" class="rounded-xl border border-emerald-200 px-3.5 py-2 text-sm text-[#3b4e47] bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
             <option value="">All Tags</option>
             @foreach($tags as $tag)
                 <option value="{{ $tag->name }}" @selected(request('tag') === $tag->name)>#{{ $tag->name }}</option>
@@ -23,7 +29,7 @@
         </select>
 
         <div class="flex gap-2">
-            <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm px-5 py-2 rounded-xl transition">
+            <button type="submit" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm px-5 py-2 rounded-xl transition cursor-pointer">
                 Filter
             </button>
             @if(request()->hasAny(['search', 'category', 'tag']))
@@ -37,7 +43,7 @@
     <!-- Posts Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         @forelse($posts as $post)
-            <article class="bg-white border {{ $post->is_pinned ? 'border-amber-300 ring-1 ring-amber-200' : 'border-emerald-100' }} rounded-2xl p-5 shadow-xs flex flex-col justify-between space-y-4">
+            <article class="bg-white border {{ $post->is_pinned ? 'border-amber-300 ring-2 ring-amber-300/60' : 'border-emerald-100' }} rounded-2xl p-5 shadow-lg flex flex-col justify-between space-y-4">
                 <div class="space-y-3">
                     <div class="flex items-center justify-between gap-2">
                         <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
@@ -83,13 +89,13 @@
                 </div>
             </article>
         @empty
-            <div class="col-span-full bg-white border border-emerald-100 rounded-2xl p-10 text-center text-emerald-700">
+            <div class="col-span-full bg-white border border-emerald-100 rounded-2xl p-10 text-center text-emerald-800 font-medium">
                 No announcements matched your filter.
             </div>
         @endforelse
     </div>
 
-    <div>
+    <div class="pt-2">
         {{ $posts->links() }}
     </div>
 </div>

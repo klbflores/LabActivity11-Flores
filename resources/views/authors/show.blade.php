@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="max-w-4xl mx-auto space-y-6">
-    <a href="{{ route('posts.index') }}" class="inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-900">
+    <a href="{{ route('posts.index') }}" class="inline-flex items-center gap-1.5 text-sm font-bold text-emerald-300 hover:text-white transition">
         &larr; Back to Bulletin
     </a>
 
