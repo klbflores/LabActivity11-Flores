@@ -43,9 +43,9 @@
 3. **Configure Environment:**
     ```bash
     cp .env.example .env
-    php artisan key:generate
+    php artisan key:generate```
 
-    Configure MySQL in ```.env:
+    Configure MySQL in ```.env:```
     ```DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
@@ -62,6 +62,6 @@
     npm install
     npm run dev
 
-5. **Start Dev Server:**
+5. **Start Laravel Server:**
     ```bash
     php artisan serve
